@@ -59,7 +59,7 @@ Lib.AttachEntityToCharacter = function(object, character, boneName, coords, rota
     object:K2_SetActorRelativeRotation(Rotator(rotation.X, rotation.Y, rotation.Z), false, nil, true)
     object:SetActorScale3D(Vector(args.scale.X, args.scale.Y, args.scale.Z))
 end
-Lib.DetachEntity = function(object, character, args)
+Lib.DetachEntity = function(object, args)
     args = args or {}
     args.physics = args.physics or false
     args.collision = args.collision or CollisionType.StaticOnly

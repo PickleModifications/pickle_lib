@@ -1,0 +1,305 @@
+{
+  "namespaces": [
+    {
+      "name": "shared",
+      "classes": [
+        {
+          "name": "Lib",
+          "description": null,
+          "fields": [
+
+          ],
+          "functions": [
+            {
+              "name": "CreateInterval",
+              "isStatic": true,
+              "description": "Creates a new interval that calls the given function every `ms` milliseconds.\nThis interval will be automatically cleared on shutdown.",
+              "parameters": [
+                {
+                  "name": "func",
+                  "type": "fun()",
+                  "optional": false,
+                  "description": "the function to call every interval"
+                },
+                {
+                  "name": "ms",
+                  "type": "number",
+                  "optional": false,
+                  "description": "the interval in milliseconds"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "number",
+                  "name": "threadId",
+                  "description": "the thread id of the created interval"
+                }
+              ]
+            },
+            {
+              "name": "CreateThread",
+              "isStatic": true,
+              "description": "Creates a new thread that runs the given function.\nThis just calles `Timer.CreateThread` internally.",
+              "parameters": [
+                {
+                  "name": "func",
+                  "type": "fun()",
+                  "optional": false,
+                  "description": "the function to run in the new thread"
+                }
+              ],
+              "returns": [
+
+              ]
+            },
+            {
+              "name": "Wait",
+              "isStatic": true,
+              "description": "Waits for the given amount of milliseconds.\nThis just calles `Timer.Wait` internally.",
+              "parameters": [
+                {
+                  "name": "ms",
+                  "type": "number",
+                  "optional": false,
+                  "description": "the amount of milliseconds to wait"
+                }
+              ],
+              "returns": [
+
+              ]
+            },
+            {
+              "name": "ClearThread",
+              "isStatic": true,
+              "description": "Clears the given thread.",
+              "parameters": [
+                {
+                  "name": "thread",
+                  "type": "number",
+                  "optional": false,
+                  "description": "the thread id of the thread to clear"
+                }
+              ],
+              "returns": [
+
+              ]
+            },
+            {
+              "name": "startShutdown",
+              "isStatic": true,
+              "description": "Starts the shutdown process by calling all registered shutdown functions.",
+              "parameters": [
+
+              ],
+              "returns": [
+
+              ]
+            },
+            {
+              "name": "onShutdown",
+              "isStatic": true,
+              "description": "Registers a function to be called on shutdown.",
+              "parameters": [
+                {
+                  "name": "func",
+                  "type": "fun()",
+                  "optional": false,
+                  "description": "the function to call on shutdown"
+                }
+              ],
+              "returns": [
+
+              ]
+            },
+            {
+              "name": "print",
+              "isStatic": true,
+              "description": "Performs a simple print.\nThis just calls the global `print` function.",
+              "parameters": [
+                {
+                  "name": "...",
+                  "type": "any",
+                  "optional": false,
+                  "description": null
+                }
+              ],
+              "returns": [
+
+              ]
+            },
+            {
+              "name": "CreateObject",
+              "isStatic": true,
+              "description": "Creates a new static object in the world.\nThis will also track the object for deletion on shutdown.",
+              "parameters": [
+                {
+                  "name": "model",
+                  "type": "string",
+                  "optional": false,
+                  "description": "the model to use for the object"
+                },
+                {
+                  "name": "position",
+                  "type": "Vector",
+                  "optional": false,
+                  "description": "the position to spawn the object at"
+                },
+                {
+                  "name": "rotation",
+                  "type": "Vector",
+                  "optional": false,
+                  "description": "the rotation to spawn the object with"
+                }
+              ],
+              "returns": [
+                {
+                  "type": "StaticMesh",
+                  "name": "object",
+                  "description": "the created object"
+                }
+              ]
+            },
+            {
+              "name": "AttachEntityToCharacter",
+              "isStatic": true,
+              "description": "Attaches the given object to the given character at the specified bone.",
+              "parameters": [
+                {
+                  "name": "object",
+                  "type": "StaticMesh",
+                  "optional": false,
+                  "description": "the object to attach"
+                },
+                {
+                  "name": "character",
+                  "type": "HCharacter",
+                  "optional": false,
+                  "description": "the character to attach the object to"
+                },
+                {
+                  "name": "boneName",
+                  "type": "string",
+                  "optional": false,
+                  "description": "the name of the bone to attach the object to"
+                },
+                {
+                  "name": "offset",
+                  "type": "Vector",
+                  "optional": false,
+                  "description": "the relative coordinates to attach the object at"
+                },
+                {
+                  "name": "rotation",
+                  "type": "Vector",
+                  "optional": false,
+                  "description": "the relative rotation to attach the object with"
+                },
+                {
+                  "name": "args",
+                  "type": "{scale:Vector?,collision:CollisionType?}?",
+                  "optional": false,
+                  "description": "additional arguments"
+                }
+              ],
+              "returns": [
+
+              ]
+            },
+            {
+              "name": "DetachEntity",
+              "isStatic": true,
+              "description": "Detaches the given object from any actor it is attached to.",
+              "parameters": [
+                {
+                  "name": "object",
+                  "type": "StaticMesh",
+                  "optional": false,
+                  "description": "the object to detach"
+                },
+                {
+                  "name": "args",
+                  "type": "{physics:boolean?,collision:CollisionType?}?",
+                  "optional": false,
+                  "description": "additional arguments"
+                }
+              ],
+              "returns": [
+
+              ]
+            },
+            {
+              "name": "DeleteObject",
+              "isStatic": true,
+              "description": "Deletes the given object from the world.\nThis will also remove the object from the tracked objects for shutdown.",
+              "parameters": [
+                {
+                  "name": "object",
+                  "type": "StaticMesh",
+                  "optional": false,
+                  "description": "the object to delete"
+                }
+              ],
+              "returns": [
+
+              ]
+            }
+          ]
+        }
+      ],
+      "functions": [
+        {
+          "name": "print",
+          "isStatic": true,
+          "description": null,
+          "parameters": [
+            {
+              "name": "...",
+              "type": "any",
+              "optional": false,
+              "description": null
+            }
+          ],
+          "returns": [
+
+          ]
+        },
+        {
+          "name": "printf",
+          "isStatic": true,
+          "description": "Prints a formatted string to the console.",
+          "parameters": [
+            {
+              "name": "msg",
+              "type": "string",
+              "optional": false,
+              "description": "the message to format"
+            },
+            {
+              "name": "args",
+              "type": "table<string,any>?",
+              "optional": false,
+              "description": "the arguments to replace in the message. Use {key} in the message to denote where to replace."
+            }
+          ],
+          "returns": [
+
+          ]
+        },
+        {
+          "name": "onShutdown",
+          "isStatic": true,
+          "description": null,
+          "parameters": [
+
+          ],
+          "returns": [
+
+          ]
+        }
+      ],
+      "fields": [
+
+      ]
+    }
+  ]
+}
